@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}{{ evento }} - Registro{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/registro/css/bootstrap.min.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/registro/css/navbar-fixed-top.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.1.1/css/buttons.dataTables.min.css">
+
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.1.1/css/buttons.bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+
+
+    <link rel="stylesheet" href="{{ asset('bundles/registro/css/signin.css') }}" type="text/css"/>
+
+    <link rel="stylesheet" href="{{ asset('bundles/registro/css/custom.css') }}" type="text/css"/>
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">{{ evento }}</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                {% block nav %}
+                    <li class="active"><a href="#">Registro</a></li>
+                {% endblock %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% block navr %}
+                    <li class="active"><a data-toggle="modal" data-target=".bs-example-modal-lg">Contacto<span class="sr-only">(current)</span></a></li>
+                {% endblock %}
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">Contacto</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 center-block">
+                        mexilazos2019<i class="fa fa-at"></i>matmor.unam.mx</i>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+{% block body %}
+    <div class="container">
+
+        <!-- Main component for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <h1>Navbar example</h1>
+            <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+            <p>To see the difference between static and fixed top navbars, just scroll.</p>
+            <p>
+                <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
+            </p>
+        </div>
+    </div> <!-- /container -->
+
+{% endblock %}
+{% block javascripts %}
+    <!-- Bootstrap core JavaScript
+       ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{{ asset('bundles/registro/js/bootstrap.min.js') }}" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+
+{% endblock %}
+</body>
+</html>

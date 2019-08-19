@@ -1,0 +1,268 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'form/form_errors.html.twig' %}
+
+
+{% block body %}
+
+    {{ form_errors(form) }}
+
+
+    <div class="container">
+
+        <p><h1 class="text-center">Mexilazos 2019</h1></p>
+        {% block info %}
+            <strong><span class="glyphicon glyphicon-warning-sign"></span> Importante</strong> <br><br>
+            <p> -Los campos marcados con * son obligatorios.</p>
+            <p>-Debes asegurarte que el archivo a enviar a través de este formulario sea de un tamaño menor a 2MB y en formato PDF.</p>
+            <p class="text-justify">-Se enviará un correo al profesor que te recomienda para solicitarle que nos
+                proporcione tu carta de recomendación, por lo que  debes asegurarte de
+                escribir correctamente su dirección de correo.</p>
+            <p class="text-justify">-Al finalizar el envío de este formulario debes de visualizar una pantalla de confirmación. Además, recibirás un correo electrónico a la cuenta que proporcionaste,
+                de no ser así favor de revisar tu carpeta de correos no desados o comunicarte al correo <strong>webmaster@matmor.unam.mx</strong> para asegurarte que hayamos recibido tu solicitud.
+            </p>
+            <p>-Fecha límite para realizar tu registro: <mark>11 de octubre 2019</mark>.</p>
+            <p>-Fecha límite para la recepción de la carta de recomendación: <mark>11 de octubre de 2019</mark></p>
+        {% endblock %}
+
+        {{ form_start(form) }}
+
+        <h1><small><i class="fa fa-user"></i> Registro</small></h1>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <div>
+                                    {{ form_label(form.nombre) }}
+                                </div>
+                                <div>
+                                    {{ form_widget(form.nombre,{'attr': {'class': 'form-control input-sm', 'placeholder':'Nombre'} } ) }}
+                                </div>
+                                <div>{{ form_errors(form.nombre) }}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <div>
+                                    {{ form_label(form.apellidos) }}
+                                </div>
+                                <div>
+                                    {{ form_widget(form.apellidos, {'attr': {'class': 'form-control input-sm', 'placeholder':'Apellidos'} } ) }}
+                                </div>
+                                <div>{{ form_errors(form.apellidos) }}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <div >
+                                    {{ form_label(form.sexo) }}
+                                </div>
+                                <div>
+                                    {% spaceless %}
+                                        {% for child in form.sexo %}
+                                            <div class="radio-inline">
+                                                {{ form_widget(child) }}  {{ form_label(child, null, {'label_attr': {'class': 'btn btn-default btn-xs'}}) }}
+                                            </div>
+                                        {% endfor %}
+                                    {% endspaceless %}
+                                </div>
+                                <div>{{ form_errors(form.sexo) }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <div>{{ form_label(form.mail) }}</div>
+                                <div>{{ form_widget(form.mail, {'attr': {'class': 'form-control input-sm', 'placeholder':'Correo electrónico'} } ) }}</div>
+                                <div>{{ form_errors(form.mail) }}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <div>{{ form_label(form.institucion) }}</div>
+                                <div>{{ form_widget(form.institucion, {'attr': {'class': 'form-control input-sm', 'placeholder':'Institución de procedencia'} } ) }}</div>
+                                <div>{{ form_errors(form.institucion) }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <div>{{ form_label(form.statuses) }}</div>
+                                <div>{{ form_widget(form.statuses, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                <div>{{ form_errors(form.statuses) }}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <div>{{ form_label(form.status) }}</div>
+                                <div>{{ form_widget(form.status, {'attr': {'class': 'form-control input-sm', 'placeholder':'Otro status'} } ) }}</div>
+                                <div>{{ form_errors(form.status) }}</div><br>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12" >
+                            <div class="alert alert-dismissable alert-warning">
+                                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                El archivo que selecciones deben de estar en formato <i class="fa fa-file-pdf-o"></i>
+                                PDF y tener un tamaño menor a 2MB.
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <div>{{ form_widget(form.historialFile) }}</div>
+                                <div>{{ form_errors(form.historialFile) }}</div><br>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <h1><small><i class="fa fa-comment"></i> Plática</small></h1>
+        <p class="text-justify alert alert-dismissable alert-warning">En caso de que desee impartir una plática darnos el título y resumen.</p>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                                <div>{{ form_label(form.titulo) }}</div>
+                                <div>{{ form_widget(form.titulo, {'attr': {'class': 'form-control input-sm', 'placeholder':'Título de la plática'} } ) }}</div>
+                                <div>{{ form_errors(form.titulo) }}</div>
+                            </div>
+                            <div class="col-md-12" ><br>
+                                <div>{{ form_label(form.resumen) }}</div>
+                                <div>{{ form_widget(form.resumen, {'attr': {'class': 'form-control input-sm', 'rows':'10', 'placeholder':'Resumen de la plática'} } ) }}</div>
+                                <div>{{ form_errors(form.resumen) }}</div><br>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1><small><i class="fa fa-book"></i> Recomendación en caso de ser estudiante</small></h1>
+
+        <p class="text-justify alert alert-dismissable alert-warning">En caso de ser estudiante darnos nombre y correo-e de un profesor quien haya accedido a escribir una referencia de apoyo para su participación en Mexilazos 2019.
+        </p>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+                                <div>{{ form_label(form.profesor) }}</div>
+                                <div>{{ form_widget(form.profesor, {'attr': {'class': 'form-control input-sm', 'placeholder':'Nombre de un profesor que haya accedido a escribir una referencia sobre usted'} } ) }}</div>
+                                <div>{{ form_errors(form.profesor) }}</div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+                                <div class="form-group">
+                                    <div>{{ form_label(form.instprofesor) }}</div>
+                                    <div><br>{{ form_widget(form.instprofesor, {'attr': {'class': 'form-control input-sm', 'placeholder':'Institución del profesor'} } ) }}</div>
+                                    <div>{{ form_errors(form.instprofesor) }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+                                <div>{{ form_label(form.mailprofesor) }}</div>
+                                <div>{{ form_widget(form.mailprofesor, {'attr': {'class': 'form-control input-sm', 'placeholder':'Para solicitar la carta de recomendación'} } ) }}</div>
+                                <div>{{ form_errors(form.mailprofesor) }}</div><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1><small><i class="fa fa-commenting" aria-hidden="true"></i> {{ evento }}</small></h1>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-12" ><br>
+                            <div>{{ form_label(form.infoadicional) }}</div>
+                            <div>{{ form_widget(form.infoadicional, {'attr': {'class': 'form-control input-sm', 'rows':'5', 'placeholder':'Información adicional'} } ) }}</div>
+                            <div>{{ form_errors(form.infoadicional) }}</div><br>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-7 col-lg-offset-5">
+                <input type="submit" value="Enviar"  class="btn btn-primary"/>
+
+                {{ form_end(form) }}
+
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+
+
+    {#
+            {{ form_widget(form) }}
+        {{ form_end(form) }}
+
+        <ul>
+            <li>
+                <a href="{{ path('form_index') }}">Back to the list</a>
+            </li>
+        </ul> #}
+
+{% endblock %}
+
+
+
+    {% block footer %}
+        <div class="container">
+            <br><br>
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <ul class="list-unstyled">
+                            <li class="pull-right">
+                                <a href="#top"><i class="fa fa-arrow-circle-up"></i> Subir</a>
+                            </li>
+                        </ul>
+                        {# <p><a href="http://matmor.unam.mx" rel="nofollow"><img src="{{ asset('bundles/ccmesver14esver/images/ccm-color.png') }}" alt="Logo CCM" width="121px" height="35px"/></a></p>
+                           <p><a href="http://unam.mx" rel="nofollow">UNAM</a></p>
+                         #}
+                    </div>
+                </div>
+            </footer>
+        </div>
+    {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/registro/js/onchange.js')}}"></script>
+
+{% endblock javascripts %}

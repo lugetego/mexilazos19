@@ -1,0 +1,193 @@
+{% extends 'base.html.twig' %}
+
+
+{% block nav %}
+    <li class="active"><a href="#">Registros</a></li>
+    <li><a data-toggle="modal" data-target="#correos">Correos</a></li>
+{% endblock %}
+
+{% block navr %}
+    <li class="active"><a href="{{ path('logout') }}">Logout<span class="sr-only">(current)</span></a></li>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="{{ path('admin') }}">Solicitudes de registro</a></li>
+            <li class="active">{{ form.slug }}</li>
+        </ul>
+
+        {% for flash_message in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success" role="alert">
+                <i class="fa fa-check"></i> {{ flash_message }}
+            </div>
+        {% endfor %}
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-header col-lg-12">
+                            <h2><i class="fa fa-user"></i> {{ form.nombre }} {{ form.apellidos }} <small><em>{{ form.mail }}</em></small> </h2>
+                        </div>
+                        <div class="col-lg-3">
+                            <dl>
+                                <dt>Sexo</dt>
+                                <dd>{% if form.sexo == false %}
+                                        Femenino
+                                    {% else %}
+                                        Masculino
+                                    {% endif %}
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="col-lg-3">
+                            <dl>
+                                <dt>Institución</dt>
+                                <dd>{{ form.institucion }}</dd>
+                            </dl>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <dl>
+                                <dt>Estatus</dt>
+                                <dd>{{ form.status }}</dd>
+                            </dl>
+                        </div>
+                        {% if form.titulo is defined %}
+                            <div class="col-lg-12">
+                                <dl>
+                                    <dt>Título de la plática</dt>
+                                    <dd>{{ form.titulo }}</dd>
+                                </dl>
+                            </div>
+                        {% endif %}
+                        {% if form.resumen is defined %}
+                            <div class="col-lg-12">
+                                <dl>
+                                    <dt>Resumen de la plática</dt>
+                                    <dd>{{ form.resumen }}</dd>
+                                </dl>
+                            </div>
+                        {% endif %}
+                        {% if (form.status == "Estudiante de licenciatura") or (form.status == "Estudiante de posgrado")  %}
+                            <div class="col-lg-3">
+                                <dl>
+                                    <dt>Historial</dt>
+                                    <dd><a href="{{ vich_uploader_asset(form, 'historialFile') }}"  target="_blank"/>{{ form.historialName }}</a></dd>
+                                </dl>
+                            </div>
+                            <div class="col-lg-3">
+                                <dl>
+                                    <dt>Profesor</dt>
+                                    <dd>{{ form.profesor }}</dd>
+                                </dl>
+                            </div>
+                            <div class="col-lg-3">
+                                <dl>
+                                    <dt>Institución del profesor</dt>
+                                    <dd>{{ form.instprofesor }}</dd>
+                                </dl>
+                            </div>
+                            <div class="col-lg-3">
+                                <dl>
+                                    <dt>Correo</dt>
+                                    <dd>{{ form.mailprofesor }}</dd>
+                                </dl>
+                            </div>
+                            <div class="col-lg-3">
+                                <dl>
+                                    <dt>Carta de recomendación</dt>
+                                    <dd><a href="{{ vich_uploader_asset(form, 'cartaFile') }}"  target="_blank" />{{ form.cartaName }}</a></dd>
+                                </dl>
+                            </div>
+                            <div class="col-lg-12">
+                                <dl>
+                                    <dt>Texto de recomendación</dt>
+                                    <dd>{{ form.recomendacion }}</dd>
+                                </dl>
+                            </div>
+                        {% endif %}
+                        <div class="col-lg-12">
+                            <dl>
+                                <dt>Información adicional</dt>
+                                <dd>{{ form.infoadicional }}</dd>
+                            </dl>
+                        </div>
+                        <div class="page-header col-lg-12">
+                            <h1><small><i class="fa fa-check-square"></i> Datos de control</small></h1>
+                        </div>
+                        <div class="col-lg-4">
+                            <dl>
+                                <dt>Aceptado</dt>
+                                {% if form.aceptado == true %}
+                                    <dd><span class="label label-success">Si</span></dd>
+                                {% else %}
+                                    <dd><span class="label label-danger">No</span></dd>
+                                {% endif %}
+                            </dl>
+                        </div>
+                        <div class="col-lg-4">
+                            <dl>
+                                <dt>Confirmado</dt>
+                                {% if form.confirmado == true %}
+                                    <dd><span class="label label-success">Si</span></dd>
+                                {% else %}
+                                    <dd><span class="label label-danger">No</span></dd>
+                                {% endif %}
+                            </dl>
+                        </div>
+                        <div class="col-lg-12">
+                            <dl>
+                                <dt>Comentarios</dt>
+                                <dd>{{ form.comentarios }}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-lg-2">
+                            <dl>
+                                <dt>Creado</dt>
+                                <dd>{{ form.createdAt|localizeddate('long', 'none') }}</dd>
+                            </dl>
+
+                        </div>
+                        <div class="col-lg-2">
+                            <dl>
+                                <dt>Modificado</dt>
+                                <dd>{{ form.updatedAt|localizeddate('long', 'none') }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-lg-offset-4">
+
+            <a href="{{ path('admin') }}" class="btn btn-primary">
+                Ver solicitudes
+            </a>
+            <a href="{{ path('form_eval', { 'id': form.id }) }}" class="btn btn-primary" data-toggle="modal" data-target="#evalModal">
+                Evaluar solicitud
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="evalModal" tabindex="-1" role="dialog" aria-labelledby="evalModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="evalModalLabel">Evaluacion</h4>
+                </div>
+                <div class="modal-body">
+                    {% render(controller('RegistroBundle:Admin:eval', {'id': form.id})) %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
