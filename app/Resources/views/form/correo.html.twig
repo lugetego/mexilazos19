@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+
+{% block nav %}
+    <li class="active"><a href="#">Registros</a></li>
+    <li><a data-toggle="modal" data-target="#correos">Correos</a></li>
+{% endblock %}
+
+{% block navr %}
+    <li class="active"><a href="{{ path('logout') }}">Logout<span class="sr-only">(current)</span></a></li>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        {% set total= entity|length %}
+        Se enviaron {{ total }} correos<br>
+        {% for entities in entity %}
+            {{ entities.mail }}<br>
+        {% endfor %}
+    </div>
+
+{% endblock %}

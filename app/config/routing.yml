@@ -1,0 +1,20 @@
+registro:
+    resource: "@RegistroBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+login:
+    pattern:   /login
+    defaults:  { _controller: RegistroBundle:Login:login }
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    path: /logout
+
+registro_eval:
+    path:      /{id}/eval
+    defaults:  { _controller: RegistroBundle:Admin:eval }
+
+

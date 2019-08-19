@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="alert alert-dismissable alert-success">
+            <strong>
+                <i class="fa fa-check"></i>
+                Hemos recibido su información de recomendación del alumno: {{ entity.nombre|title }} {{ entity.paterno|title }} {{ entity.materno|title }}</strong>
+            <br>
+            <br>
+            <p class="small">Si no recibes el correo de confirmación puedes verificar en tu bandeja de correos no deseados,
+                si no lo has recibido puedes escribir a:<br> <strong>webmaster<i class="fa fa-at"></i>matmor.unam.mx</strong><br>
+                para confirmar tu registro.
+            </p>
+        </div>
+        <div class="col-lg-7 col-lg-offset-5">
+            <a href="{{ url }}" type="button"  class="btn btn-primary">Finalizar</a>
+        </div>
+    </div>
+
+{% endblock %}

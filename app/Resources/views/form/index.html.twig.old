@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Form list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Paterno</th>
+                <th>Materno</th>
+                <th>Sexo</th>
+                <th>Nacimiento</th>
+                <th>Mail</th>
+                <th>Tel</th>
+                <th>Procedencia</th>
+                <th>Carrera</th>
+                <th>Semestre</th>
+                <th>Porcentaje</th>
+                <th>Promedio</th>
+                <th>Profesor</th>
+                <th>Univprofesor</th>
+                <th>Mailprofesor</th>
+                <th>Historial</th>
+                <th>Carta</th>
+                <th>Participado</th>
+                <th>Evento</th>
+                <th>Beca</th>
+                <th>Razones</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for form in forms %}
+            <tr>
+                <td><a href="{{ path('form_show', { 'id': form.id }) }}">{{ form.id }}</a></td>
+                <td>{{ form.nombre }}</td>
+                <td>{{ form.paterno }}</td>
+                <td>{{ form.materno }}</td>
+                <td>{% if form.sexo %}Yes{% else %}No{% endif %}</td>
+                <td>{% if form.nacimiento %}{{ form.nacimiento|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ form.mail }}</td>
+                <td>{{ form.tel }}</td>
+                <td>{{ form.procedencia }}</td>
+                <td>{{ form.carrera }}</td>
+                <td>{{ form.semestre }}</td>
+                <td>{{ form.porcentaje }}</td>
+                <td>{{ form.promedio }}</td>
+                <td>{{ form.profesor }}</td>
+                <td>{{ form.univprofesor }}</td>
+                <td>{{ form.mailprofesor }}</td>
+                <td>{{ form.historialName }}</td>
+                <td>{{ form.cartaName }}</td>
+                <td>{% if form.participado %}Yes{% else %}No{% endif %}</td>
+                <td>{{ form.evento }}</td>
+                <td>{{ form.beca }}</td>
+                <td>{{ form.razones }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('form_show', { 'id': form.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('form_edit', { 'id': form.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('form_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,48 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+            in_memory:
+                memory:
+                    users:
+                        fisteo:
+                            password: $2y$12$fPOVWfH./8XxzS3adFVWr.s9EynAaX3/vZP/fYlkbyWSdkpoC5pxm
+                            roles: 'ROLE_ADMIN'
+                        admin:
+                            password: $2a$12$L4k/IkqiBjC4YhKu9kox2OyKRgO1qIytoQwW4Xe3WklTULdFUowqm
+                            roles: 'ROLE_ADMIN'
+
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 12
+
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            # activate different ways to authenticate
+
+            form_login:
+                login_path: /login
+                check_path: /login_check
+
+            logout:
+                path:   /logout
+                target: /login
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/form/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/registro/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/form/.+/.+/recom, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/form/.+/.+/confirma, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/, roles: ROLE_ADMIN }

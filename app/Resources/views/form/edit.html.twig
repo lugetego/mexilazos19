@@ -1,0 +1,300 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme edit_form 'form/form_errors.html.twig' %}
+
+{% block nav %}
+    <li class="active"><a href="#">Registro</a></li>
+
+{% endblock %}
+
+{% block navr %}
+    <li class="active"><a href="{{ path('logout') }}">Logout<span class="sr-only">(current)</span></a></li>
+{% endblock %}
+
+
+    {% block body %}
+
+        {{ form_errors(edit_form) }}
+
+        <div class="container">
+
+            {{ form_start(edit_form) }}
+
+            <div class="page-header">
+                <h1><small><i class="fa fa-user"></i> Datos personales</small></h1>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <div>
+                                        {{ form_label(edit_form.nombre) }}
+                                    </div>
+                                    <div>
+                                        {{ form_widget(edit_form.nombre,{'attr': {'class': 'form-control input-sm', 'placeholder':'Nombre'} } ) }}
+                                    </div>
+                                    <div>{{ form_errors(edit_form.nombre) }}</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <div>
+                                        {{ form_label(edit_form.paterno) }}
+                                    </div>
+                                    <div>
+                                        {{ form_widget(edit_form.paterno, {'attr': {'class': 'form-control input-sm', 'placeholder':'Apellido paterno'} } ) }}
+                                    </div>
+                                    <div>{{ form_errors(edit_form.paterno) }}</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <div>
+                                        {{ form_label(edit_form.materno) }}
+                                    </div>
+                                    <div>
+                                        {{ form_widget(edit_form.materno, {'attr': {'class': 'form-control input-sm','placeholder':'Apellido materno'} } ) }}
+                                    </div>
+                                    <div>{{ form_errors(edit_form.materno) }}</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <div >
+                                        {{ form_label(edit_form.sexo) }}
+                                    </div>
+                                    <div>
+                                        {% spaceless %}
+                                            {% for child in edit_form.sexo %}
+                                                <div class="radio-inline">
+                                                    {{ form_widget(child) }}  {{ form_label(child, null, {'label_attr': {'class': 'btn btn-default btn-xs'}}) }}
+                                                </div>
+                                            {% endfor %}
+                                        {% endspaceless %}
+                                    </div>
+                                    <div>{{ form_errors(edit_form.sexo) }}</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <div>{{ form_label(edit_form.nacimiento) }}</div>
+                                    <div class="col-lg-4" >{{ form_widget(edit_form.nacimiento.day, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                    <div class="col-lg-4" >{{ form_widget(edit_form.nacimiento.month, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                    <div class="col-lg-4" >{{ form_widget(edit_form.nacimiento.year, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                    <div>{{ form_errors(edit_form.nacimiento) }}</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4" >
+                                <div class="form-group">
+                                    <div>{{ form_label(edit_form.mail) }}</div>
+                                    <div>{{ form_widget(edit_form.mail, {'attr': {'class': 'form-control input-sm', 'placeholder':'Correo electrónico'} } ) }}</div>
+                                    <div>{{ form_errors(edit_form.mail) }}</div><br>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4" >
+                                <div class="form-group">
+                                    <div>{{ form_label(edit_form.tel) }}</div>
+                                    <div>{{ form_widget(edit_form.tel, {'attr': {'class': 'form-control input-sm', 'placeholder':'01 55 1234 5678'} } ) }}</div>
+                                    <div>{{ form_errors(edit_form.tel) }}</div><br>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h1><small><i class="fa fa-book"></i> Datos académicos</small></h1>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="col-lg-4" >
+                                    <div>{{ form_label(edit_form.procedencia) }}</div>
+                                    <div>{{ form_widget(edit_form.procedencia, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                    <div>{{ form_errors(edit_form.procedencia) }}</div>
+                                </div>
+                                <div class="col-md-4" >
+                                    <div>{{ form_label(edit_form.carrera) }}</div>
+                                    <div>{{ form_widget(edit_form.carrera, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                    <div>{{ form_errors(edit_form.carrera) }}</div><br>
+                                </div>
+                                <div class="col-md-4" >
+                                    <div>{{ form_label(edit_form.semestre) }}</div>
+                                    <div>{{ form_widget(edit_form.semestre, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                    <div>{{ form_errors(edit_form.semestre) }}</div><br>
+                                </div>
+                                <div class="col-md-4" >
+                                    <div>{{ form_label(edit_form.porcentaje) }}</div>
+                                    <div>{{ form_widget(edit_form.porcentaje, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                    <div>{{ form_errors(edit_form.porcentaje) }}</div><br>
+                                </div>
+                                <div class="col-md-4" >
+                                    <div>{{ form_label(edit_form.promedio) }}</div>
+                                    <div>{{ form_widget(edit_form.promedio, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                    <div>{{ form_errors(edit_form.promedio) }}</div><br>
+                                </div>
+
+                                <div class="col-md-4" >
+                                    <div>{{ form_label(edit_form.profesor) }}</div>
+                                    <div>{{ form_widget(edit_form.profesor, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                    <div>{{ form_errors(edit_form.profesor) }}</div><br>
+                                </div>
+                                <div class="col-md-4" >
+                                    <div>{{ form_label(edit_form.univprofesor) }}</div>
+                                    <div>{{ form_widget(edit_form.univprofesor, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                    <div>{{ form_errors(edit_form.univprofesor) }}</div><br>
+                                </div>
+
+                                <div class="col-md-8" >
+                                    <div>{{ form_label(edit_form.mailprofesor) }}</div>
+                                </div>
+                                <div class="col-md-4" >
+                                    <div>{{ form_widget(edit_form.mailprofesor, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                    <div>{{ form_errors(edit_form.mailprofesor) }}</div><br>
+                                </div>
+                                <div class="col-md-12" >
+                                    <div class="alert alert-dismissable alert-warning">
+                                        <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                        Los archivos que selecciones deben de estar en formato <i class="fa fa-file-pdf-o"></i>
+                                        PDF y tener un tamaño menor a 2MB.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4" >
+                                    <div>{{ form_widget(edit_form.historialFile) }}</div>
+                                    <div>{{ form_errors(edit_form.historialFile) }}</div><br>
+                                </div>
+
+
+                                <div class="col-md-4" >
+                                    <div>{{ form_widget(edit_form.cartaFile) }}</div>
+                                    <div>{{ form_errors(edit_form.cartaFile) }}</div><br>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h1><small><i class="fa fa-clock-o"></i> Participaciones anteriores</small></h1>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="col-lg-6" >
+                                    <div>{{ form_label(edit_form.participado) }}</div>
+                                    <div>
+                                        {% spaceless %}
+                                            {% for child in edit_form.participado %}
+                                                <div class="radio-inline">
+                                                    {{ form_widget(child) }}  {{ form_label(child, null, {'label_attr': {'class': 'btn btn-default btn-xs'}}) }}
+                                                </div>
+                                            {% endfor %}
+                                        {% endspaceless %}
+                                    </div>
+                                    <div>{{ form_errors(edit_form.participado) }}</div>
+                                </div>
+                                <div class="col-lg-6" >
+                                    <div>{{ form_label(edit_form.evento) }}</div>
+                                    <div>{{ form_widget(edit_form.evento, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                    <div>{{ form_errors(edit_form.evento) }}</div><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h1><small><i class="fa fa-calculator"></i> Escuela de Verano 2018</small></h1>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="col-md-4" >
+                                    <div>{{ form_label(edit_form.beca) }}</div>
+                                    <div>{{ form_widget(edit_form.beca, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                    <div>{{ form_errors(edit_form.beca) }}</div>
+                                </div>
+                                <div class="col-md-8" >
+                                    <div>{{ form_label(edit_form.razones) }}</div>
+                                    <div>{{ form_widget(edit_form.razones, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                    <div>{{ form_errors(edit_form.razones) }}</div><br>
+                                </div>
+
+                                <div class="col-md-8" >
+                                    <div>{{ form_label(edit_form.comentarios) }}</div>
+                                    <div>{{ form_widget(edit_form.comentarios, {'attr': {'class': 'form-control input-sm'} } ) }}</div>
+                                    <div>{{ form_errors(edit_form.comentarios) }}</div><br>
+                                </div>
+
+                                <div class="col-lg-4">
+
+                                    Confirmado
+                                        {% if registro.confirmado %}Yes{% else %}No{% endif %}
+
+                                </div>
+
+                                <div class="col-lg-4">
+
+                                    Aceptado
+                                    {% if registro.aceptado %}Yes{% else %}No{% endif %}
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-lg-offset-6">
+                    <input type="submit" value="Enviar"  class="btn btn-primary"/>
+
+                    {{ form_end(edit_form) }}
+
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+
+    {% block footer %}
+        <div class="container">
+            <br><br>
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <ul class="list-unstyled">
+                            <li class="pull-right">
+                                <a href="#top"><i class="fa fa-arrow-circle-up"></i> Subir</a>
+                            </li>
+                        </ul>
+                        {# <p><a href="http://matmor.unam.mx" rel="nofollow"><img src="{{ asset('bundles/ccmesver14esver/images/ccm-color.png') }}" alt="Logo CCM" width="121px" height="35px"/></a></p>
+                           <p><a href="http://unam.mx" rel="nofollow">UNAM</a></p>
+                         #}
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme edit_form 'form/form_errors.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+
+        {% block info %}
+            <div class="alert alert-dismissable alert-info">
+                <strong><span class="glyphicon glyphicon-warning-sign"></span> Importante</strong> <br><br>
+                -Al finalizar el envío de este formulario debe de visualizar una pantalla de confirmación además de recibir un correo electrónico
+                a su cuenta,
+                de no ser así favor de comunicarse al correo <strong>webmaster@matmor.unam.mx</strong> para asegurarse que se haya recibido su información.
+            </div>
+        {% endblock %}
+
+        {{ form_start(edit_form) }}
+
+        <div class="col-lg-12">
+            <div class="form-group">
+                <div >
+                    {{ form_label(edit_form.confirmado, '¿Confirmas tu participación a la Escuela de Verano en Matemáticas?') }}
+                </div>
+                <div>
+                    {% spaceless %}
+                        {% for child in edit_form.confirmado %}
+                            <div class="radio-inline">
+                                {{ form_widget(child) }}  {{ form_label(child, null, {'label_attr': {'class': 'btn btn-default btn-xs'}}) }}
+                            </div>
+                        {% endfor %}
+                    {% endspaceless %}
+                </div>
+                <div>{{ form_errors(edit_form.confirmado) }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-lg-offset-5">
+            <input type="submit" value="Enviar"  class="btn btn-primary"/>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
+
+{% endblock %}

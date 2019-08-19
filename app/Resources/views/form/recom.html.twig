@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme edit_form 'form/form_errors.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+
+        {% block info %}
+            <div class="alert alert-dismissable alert-info">
+                <strong><span class="glyphicon glyphicon-warning-sign"></span> Importante</strong> <br><br>
+                -Debe asegurarse que el archivo a enviar a través de este formulario sea de un tamaño menor a 2MB y en formato PDF.<br>
+                -Al finalizar el envío de este formulario debe de visualizar una pantalla de confirmación además de recibir un correo electrónico
+                a su cuenta y a la cuenta de correo del alumno que está recomendado,
+                de no ser así favor de comunicarse al correo <strong>webmaster@matmor.unam.mx</strong> para asegurarse que se haya recibido su información.
+            </div>
+
+            <div class="alert alert-dismissable alert-warning">
+                -Para enviar la información sobre la recomendación de su alumno <mark>{{ registro.nombre|title }}  {{ registro.apellidos|title }}</mark>
+                puede llenar el campo <strong>Recomendación</strong> o bien
+                utilizar el campo <strong>Carta de recomendación</strong> para enviar un archivo PDF.
+            </div>
+        {% endblock %}
+
+        {{ form_start(edit_form) }}
+
+        <div class="row">
+            <div class="col-md-12" >
+                <div>{{ form_label(edit_form.recomendacion) }}</div>
+                <div>{{ form_widget(edit_form.recomendacion, {'attr': {'class': 'form-control input-sm', 'rows': 10} } ) }}</div>
+                <div>{{ form_errors(edit_form.recomendacion) }}</div><br>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4" >
+                <div>{{ form_widget(edit_form.cartaFile) }}</div>
+                <div>{{ form_errors(edit_form.cartaFile) }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-lg-offset-5">
+            <input type="submit" value="Enviar"  class="btn btn-primary"/>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
+
+{% endblock %}

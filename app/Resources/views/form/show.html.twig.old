@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Form</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ form.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ form.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Paterno</th>
+                <td>{{ form.paterno }}</td>
+            </tr>
+            <tr>
+                <th>Materno</th>
+                <td>{{ form.materno }}</td>
+            </tr>
+            <tr>
+                <th>Sexo</th>
+                <td>{% if form.sexo %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nacimiento</th>
+                <td>{% if form.nacimiento %}{{ form.nacimiento|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ form.mail }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ form.tel }}</td>
+            </tr>
+            <tr>
+                <th>Procedencia</th>
+                <td>{{ form.procedencia }}</td>
+            </tr>
+            <tr>
+                <th>Carrera</th>
+                <td>{{ form.carrera }}</td>
+            </tr>
+            <tr>
+                <th>Semestre</th>
+                <td>{{ form.semestre }}</td>
+            </tr>
+            <tr>
+                <th>Porcentaje</th>
+                <td>{{ form.porcentaje }}</td>
+            </tr>
+            <tr>
+                <th>Promedio</th>
+                <td>{{ form.promedio }}</td>
+            </tr>
+            <tr>
+                <th>Profesor</th>
+                <td>{{ form.profesor }}</td>
+            </tr>
+            <tr>
+                <th>Univprofesor</th>
+                <td>{{ form.univprofesor }}</td>
+            </tr>
+            <tr>
+                <th>Mailprofesor</th>
+                <td>{{ form.mailprofesor }}</td>
+            </tr>
+            <tr>
+                <th>Historial</th>
+                <td><a href="{{ vich_uploader_asset(form, 'historialFile') }}" alt="historial" />{{ form.historialName }}</a></td>
+
+            </tr>
+            <tr>
+                <th>Carta</th>
+                <td><a href="{{ vich_uploader_asset(form, 'cartaFile') }}" alt="carta" />{{ form.cartaName }}</a></td>
+            </tr>
+            <tr>
+                <th>Participado</th>
+                <td>{% if form.participado %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Evento</th>
+                <td>{{ form.evento }}</td>
+            </tr>
+            <tr>
+                <th>Beca</th>
+                <td>{{ form.beca }}</td>
+            </tr>
+            <tr>
+                <th>Razones</th>
+                <td>{{ form.razones }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('form_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('form_edit', { 'id': form.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
