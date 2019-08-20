@@ -7,8 +7,8 @@ security:
             in_memory:
                 memory:
                     users:
-                        fisteo:
-                            password: $2y$12$fPOVWfH./8XxzS3adFVWr.s9EynAaX3/vZP/fYlkbyWSdkpoC5pxm
+                        mexilazos:
+                            password: $2y$12$cy4xyzxvq.8kKi97.u7aCeWXhTtV5XTKZ2azMxM7cYlOoBhzxSR42
                             roles: 'ROLE_ADMIN'
                         admin:
                             password: $2a$12$L4k/IkqiBjC4YhKu9kox2OyKRgO1qIytoQwW4Xe3WklTULdFUowqm
