@@ -95,6 +95,9 @@ class FormType extends AbstractType
                 if ($data['statuses']) {
                     $val = $data['statuses'];
                 }
+                else {
+                    $data['statuses']='';
+                }
                 if ( $val !='Otro') {
                     $data['status'] = $val;
                     $event->setData($data);
