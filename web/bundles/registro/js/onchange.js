@@ -33,3 +33,11 @@ $(document).ready(function(){
     });
 
 });
+
+
+$('select').on('change', function() {
+    if (this.value == "Estudiante de licenciatura" || this.value == "Estudiante de posgrado" ){
+        alert( "Es necesario que envíes tu historial académico y la información de un profesor quien haya accedido a escribir una referencia de apoyo." );
+    }
+});
+
