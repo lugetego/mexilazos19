@@ -98,12 +98,22 @@ class FormType extends AbstractType
 
 //                $val = array_key_exists('statuses', $data) ? $data['statuses'] : null;
 //
+                if (array_key_exists('statuses',$data)){
 
-                $val = $data['statuses'];
-                if ( $val !='Otro') {
-                    $data['status'] = $val;
-                    $event->setData($data);
+                    $val = $data['statuses'];
+
+                    //$val = $data['statuses'];
+                    if ( $val !='Otro') {
+                        $data['status'] = $val;
+                        $event->setData($data);
+                    }
+
                 }
+                else {
+                    return;
+                }
+
+
             }
         );
 
