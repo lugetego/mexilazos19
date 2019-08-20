@@ -5,7 +5,7 @@ parameters:
     evento: ' Mexilazos 2019'
     eventoc: ''
     url: 'http://www.matmor.unam.mx/eventos/mexilazos2019'
-    comite: 'Alejandro Corichi, José Antonio Zapata'
+    comite: 'Mariano Celada, Daniele Colosi, Alejandro Corichi, José Antonio Zapata'
 
 
 services:
