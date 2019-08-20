@@ -92,7 +92,9 @@ class FormType extends AbstractType
             function (FormEvent $event) {
                 // this would be your entity, i.e. SportMeetup
                 $data = $event->getData();
-                $val = $data['statuses'];
+                if ($data['statuses']) {
+                    $val = $data['statuses'];
+                }
                 if ( $val !='Otro') {
                     $data['status'] = $val;
                     $event->setData($data);
