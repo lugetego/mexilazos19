@@ -83,10 +83,10 @@ class FormType extends AbstractType
 
                 $data = $event->getData();
 
-                $statuses = null !== $data ? $data->getStatus() : null;
+//                $statuses = null !== $data ? $data->getStatus() : null;
 
-                //$formModifier($event->getForm(), $data->getStatus());
-                $formModifier($event->getForm(), $statuses);
+                $formModifier($event->getForm(), $data->getStatus());
+  //              $formModifier($event->getForm(), $statuses);
             }
         );
 
