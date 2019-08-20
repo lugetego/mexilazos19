@@ -81,12 +81,12 @@ vich_uploader:
 
     mappings:
         fisteo19_carta:
-            uri_prefix:         /mexilazos19/submissions
+            uri_prefix:         /fisteo19/submissions
             upload_destination: %kernel.root_dir%/../web/submissions
             namer:              vich_uploader.namer_uniqid
 
         fisteo19_historial:
-            uri_prefix:         /mexilazos19/submissions
+            uri_prefix:         /fisteo19/submissions
             upload_destination: %kernel.root_dir%/../web/submissions
             namer:              vich_uploader.namer_uniqid
 

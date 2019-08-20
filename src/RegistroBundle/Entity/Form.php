@@ -180,7 +180,7 @@ class Form
     /**
      * @var string
      *
-     * @ORM\Column(name="infoadicional", type="text")
+     * @ORM\Column(name="infoadicional", type="text", nullable=true)
      * @Assert\Length(
      *      max = 2000,
      *      maxMessage = "No se permiten más de {{ limit }} caracteres"
