@@ -80,40 +80,26 @@ class FormType extends AbstractType
         $builder->addEventListener(
             FormEvents::PRE_SET_DATA,
             function (FormEvent $event) use ($formModifier) {
-
                 $data = $event->getData();
-
-//                $statuses = null !== $data ? $data->getStatus() : null;
-
                 $formModifier($event->getForm(), $data->getStatus());
-  //              $formModifier($event->getForm(), $statuses);
             }
         );
 
         $builder->addEventListener(
             FormEvents::PRE_SUBMIT,
             function (FormEvent $event) {
-                // this would be your entity, i.e. SportMeetup
                 $data = $event->getData();
 
-//                $val = array_key_exists('statuses', $data) ? $data['statuses'] : null;
-//
                 if (array_key_exists('statuses',$data)){
-
                     $val = $data['statuses'];
-
-                    //$val = $data['statuses'];
                     if ( $val !='Otro') {
                         $data['status'] = $val;
                         $event->setData($data);
                     }
-
                 }
                 else {
                     return;
                 }
-
-
             }
         );
 
