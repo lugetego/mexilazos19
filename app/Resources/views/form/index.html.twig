@@ -125,6 +125,7 @@
                                 {% set pos = pos + 1 %}
                             {% endif %}
                         {% endfor %}
+                        {% set otros = registros|length - inves - posdoc - lic - pos  %}
                         <span class="badge">{{ inves }}</span>
                         Investigadores
                         <br>
@@ -136,6 +137,8 @@
                         <br>
                         <span class="badge">{{ pos }}</span>
                         Posgrado
+                        <span class="badge">{{ otros }}</span>
+                        Otros
                     </li>
                 </ul>
             </div>
