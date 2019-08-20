@@ -81,9 +81,14 @@ class FormType extends AbstractType
             FormEvents::PRE_SET_DATA,
             function (FormEvent $event) use ($formModifier) {
                 // this would be your entity, i.e. SportMeetup
+                if (null !== $event->getData()->getStatus()) {
+                    // we don't need to add the friend field because
+                    // the message will be addressed to a fixed friend
+                    return;
+                }
+
                 $data = $event->getData();
                 $formModifier($event->getForm(), $data->getStatus());
-
             }
         );
 
@@ -91,16 +96,19 @@ class FormType extends AbstractType
             FormEvents::PRE_SUBMIT,
             function (FormEvent $event) {
                 // this would be your entity, i.e. SportMeetup
-                $data = $event->getData();
-                if ($data['statuses']) {
-                    $val = $data['statuses'];
+
+                if (null !== $event->getData()->getStatus()) {
+                    // we don't need to add the friend field because
+                    // the message will be addressed to a fixed friend
+                    return;
                 }
                 else {
-                    $data['statuses']='';
-                }
-                if ( $val !='Otro') {
-                    $data['status'] = $val;
-                    $event->setData($data);
+                    $data = $event->getData();
+                    $val = $data['statuses'];
+                    if ($val != 'Otro') {
+                        $data['status'] = $val;
+                        $event->setData($data);
+                    }
                 }
             }
         );
