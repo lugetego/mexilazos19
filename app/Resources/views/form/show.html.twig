@@ -55,7 +55,7 @@
                                 <dd>{{ form.status }}</dd>
                             </dl>
                         </div>
-                        {% if form.titulo is defined %}
+                        {% if form.titulo is not null %}
                             <div class="col-lg-12">
                                 <dl>
                                     <dt>Título de la plática</dt>
@@ -63,7 +63,7 @@
                                 </dl>
                             </div>
                         {% endif %}
-                        {% if form.resumen is defined %}
+                        {% if form.resumen is not null %}
                             <div class="col-lg-12">
                                 <dl>
                                     <dt>Resumen de la plática</dt>
@@ -109,7 +109,7 @@
                                 </dl>
                             </div>
                         {% endif %}
-                        {% if form.infoadicional is defined %}
+                        {% if form.infoadicional is not null %}
                         <div class="col-lg-12">
                             <dl>
                                 <dt>Información adicional</dt>
