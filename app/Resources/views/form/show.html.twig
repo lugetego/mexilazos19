@@ -67,7 +67,7 @@
                             <div class="col-lg-12">
                                 <dl>
                                     <dt>Resumen de la plática</dt>
-                                    <dd>{{ form.resumen }}</dd>
+                                    <dd class="text-justify">{{ form.resumen }}</dd>
                                 </dl>
                             </div>
                         {% endif %}
@@ -109,12 +109,14 @@
                                 </dl>
                             </div>
                         {% endif %}
+                        {% if form.infoadicional is defined %}
                         <div class="col-lg-12">
                             <dl>
                                 <dt>Información adicional</dt>
                                 <dd>{{ form.infoadicional }}</dd>
                             </dl>
                         </div>
+                        {% endif %}
                         <div class="page-header col-lg-12">
                             <h1><small><i class="fa fa-check-square"></i> Datos de control</small></h1>
                         </div>
