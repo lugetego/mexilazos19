@@ -52,7 +52,11 @@
                         <div class="col-lg-3">
                             <dl>
                                 <dt>Estatus</dt>
-                                <dd>{{ form.status }}</dd>
+                                {% if (form.status == "Investigador") or (form.status == "Posdoctorante") %}
+                                    <dd>No aplica</dd>
+                                {% else %}
+                                    <dd>{{ form.status }}</dd>
+                                {% endif %}
                             </dl>
                         </div>
                         {% if form.titulo is not null %}
@@ -110,12 +114,12 @@
                             </div>
                         {% endif %}
                         {% if form.infoadicional is not null %}
-                        <div class="col-lg-12">
-                            <dl>
-                                <dt>Información adicional</dt>
-                                <dd>{{ form.infoadicional }}</dd>
-                            </dl>
-                        </div>
+                            <div class="col-lg-12">
+                                <dl>
+                                    <dt>Información adicional</dt>
+                                    <dd>{{ form.infoadicional }}</dd>
+                                </dl>
+                            </div>
                         {% endif %}
                         <div class="page-header col-lg-12">
                             <h1><small><i class="fa fa-check-square"></i> Datos de control</small></h1>
