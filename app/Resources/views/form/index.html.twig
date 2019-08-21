@@ -24,7 +24,7 @@
                             {% endif %}
                         {% endfor %}
                         <span class="badge">{{ registros|length }}</span>
-                         Registros <br>
+                        Registros <br>
                         <span class="badge">{{ platicas }}</span>
                         Pláticas solicitadas <br>
                     </li>
@@ -170,9 +170,11 @@
                         <td>{{ registro.mail }}</td>
                         <td>{{ registro.institucion }}</td>
                         <td>{{ registro.status }}</td>
-                        <td>{{ registro.profesor }}</td>
-
-
+                        {% if (registro.status == "Investigador") or (registro.status == "Posdoctorante") %}
+                            <td>No aplica</td>
+                        {% else %}
+                            <td>{{ registro.profesor }}</td>
+                        {% endif %}
                         <td class="text-center">{% if registro.aceptado == true %}
                                 <span class="label label-success "><i class="fa fa-check-square"></i> Si</span>
                             {% elseif registro.aceptado is null %}

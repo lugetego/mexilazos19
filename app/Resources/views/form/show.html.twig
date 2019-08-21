@@ -52,11 +52,7 @@
                         <div class="col-lg-3">
                             <dl>
                                 <dt>Estatus</dt>
-                                {% if (form.status == "Investigador") or (form.status == "Posdoctorante") %}
-                                    <dd>No aplica</dd>
-                                {% else %}
-                                    <dd>{{ form.status }}</dd>
-                                {% endif %}
+                                <dd>{{ form.status }}</dd>
                             </dl>
                         </div>
                         {% if form.titulo is not null %}
