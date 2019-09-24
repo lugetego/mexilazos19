@@ -75,7 +75,7 @@ class Form
      * @ORM\Column(name="mail", type="string", length=255)
      * @Assert\Email(
      *     message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = true)
+     *     checkMX = false)
      */
     private $mail;
 
@@ -107,7 +107,7 @@ class Form
      * @ORM\Column(name="mailprofesor", type="string", length=50 , nullable=true)
      * @Assert\Email(
      *     message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = true)
+     *     checkMX = false)
      */
 
     private $mailprofesor;
