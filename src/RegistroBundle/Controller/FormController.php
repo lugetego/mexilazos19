@@ -411,7 +411,7 @@ class FormController extends Controller
                 $mailer = $this->get('mailer');
 
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Descarga de constancia - '. $this->getParameter('eventoc'))
+                    ->setSubject('Descarga de constancia - Mexilazos19')
                     ->setFrom('webmaster@matmor.unam.mx')
 //                    ->setTo(array($registro->getMail()))
                     ->setBcc(array('gerardo@matmor.unam.mx'))
