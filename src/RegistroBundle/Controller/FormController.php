@@ -379,7 +379,8 @@ class FormController extends Controller
 
         $defaultData = array('message' => 'Type your message here');
         $formail = $this->createFormBuilder($defaultData)
-            ->add('email', 'Symfony\Component\Form\Extension\Core\Type\EmailType',array('label'=>'Ingresa el correo con el que te registraste para descargar tu constancia'))
+            ->add('email', 'Symfony\Component\Form\Extension\Core\Type\EmailType',
+                array('label'=>'Ingresa el correo con el que te registraste para descargar tu constancia'))
             ->getForm();
 
         $formail->handleRequest($request);
