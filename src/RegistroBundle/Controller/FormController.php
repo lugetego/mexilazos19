@@ -398,12 +398,12 @@ class FormController extends Controller
             }
 
 //            $mail= strtolower($mail['email']);
-            $pdf= "http://gaspacho.matmor.unam.mx/esver19/files/".$registro->getSlug().".pdf";
+            $pdf= "http://gaspacho.matmor.unam.mx/mexilazos19/files/".$registro->getSlug().".pdf";
 
             $headers=get_headers($pdf, 1);
             if ($headers[0]!='HTTP/1.1 200 OK') {
                 throw $this->createNotFoundException(
-                    'Archivo no encontrado'
+                    'Archivo no encontrado'. $pdf
                 );
             }
             else {
