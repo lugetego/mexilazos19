@@ -397,8 +397,8 @@ class FormController extends Controller
                 );
             }
 
-            $slug= strtolower($slug['slug']);
-            $pdf= "http://gaspacho.matmor.unam.mx/esver19/files/".$slug.".pdf";
+            $mail= strtolower($mail['mail']);
+            $pdf= "http://gaspacho.matmor.unam.mx/esver19/files/".$registro->getSlug().".pdf";
 
             $headers=get_headers($pdf, 1);
             if ($headers[0]!='HTTP/1.1 200 OK') {
