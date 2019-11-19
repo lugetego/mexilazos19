@@ -397,7 +397,7 @@ class FormController extends Controller
                 );
             }
 
-            $mail= strtolower($mail['mail']);
+//            $mail= strtolower($mail['email']);
             $pdf= "http://gaspacho.matmor.unam.mx/esver19/files/".$registro->getSlug().".pdf";
 
             $headers=get_headers($pdf, 1);
